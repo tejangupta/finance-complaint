@@ -59,7 +59,7 @@ class FinanceDataSchema:
         return features
 
     @property
-    def is_one_hot_encoding_features(self) -> List[str]:
+    def im_one_hot_encoding_features(self) -> List[str]:
         return [f'im_{col}' for col in self.one_hot_encoding_features]
 
     @property
@@ -94,7 +94,7 @@ class FinanceDataSchema:
         return self.derived_output_features
 
     @property
-    def is_numerical_columns(self) -> List[str]:
+    def im_numerical_columns(self) -> List[str]:
         return [f'im_{col}' for col in self.numerical_columns]
 
     @property
@@ -107,7 +107,7 @@ class FinanceDataSchema:
 
     @property
     def input_features(self) -> List[str]:
-        in_features = self.tf_one_hot_encoding_features + self.is_numerical_columns + self.tf_tfidf_features
+        in_features = self.tf_one_hot_encoding_features + self.im_numerical_columns + self.tf_tfidf_features
         return in_features
 
     @property
