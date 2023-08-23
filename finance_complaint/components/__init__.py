@@ -2,3 +2,4 @@ from finance_complaint.components.training.data_ingestion import DataIngestion
 from finance_complaint.components.training.data_validation import DataValidation
 from finance_complaint.components.training.data_transformation import DataTransformation
 from finance_complaint.components.training.model_trainer import ModelTrainer
+from finance_complaint.components.training.model_evaluation import ModelEvaluation
