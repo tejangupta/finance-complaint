@@ -3,6 +3,7 @@ from finance_complaint.constants.training_pipeline_config.data_validation import
 from finance_complaint.constants.training_pipeline_config.data_transformation import *
 from finance_complaint.constants.training_pipeline_config.model_trainer import *
 from finance_complaint.constants.training_pipeline_config.model_evaluation import *
+from finance_complaint.constants.training_pipeline_config.model_pusher import *
 import os
 
 PIPELINE_NAME = 'finance-complaint'

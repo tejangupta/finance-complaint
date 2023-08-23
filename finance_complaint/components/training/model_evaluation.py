@@ -3,7 +3,7 @@ from finance_complaint.entity.artifact_entity import DataValidationArtifact, Mod
 from finance_complaint.entity.config_entity import ModelEvaluationConfig
 from finance_complaint.entity.schema import FinanceDataSchema
 from finance_complaint.data_access.model_eval_artifact import ModelEvaluationArtifactData
-from finance_complaint.entity.estimator import S3FinanceEstimator
+from finance_complaint.ml.estimator import S3FinanceEstimator
 from pyspark.sql.types import StructType, StructField, StringType, FloatType
 from finance_complaint.exception import FinanceException
 import sys

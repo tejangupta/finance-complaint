@@ -1,7 +1,7 @@
 from finance_complaint.constants.training_pipeline_config import *
 from finance_complaint.constants import TIMESTAMP
 from finance_complaint.entity.config_entity import TrainingPipelineConfig, DataIngestionConfig, DataValidationConfig, \
-    DataTransformationConfig, ModelTrainerConfig, ModelEvaluationConfig
+    DataTransformationConfig, ModelTrainerConfig, ModelEvaluationConfig, ModelPusherConfig
 from finance_complaint.logger import logger
 from finance_complaint.exception import FinanceException
 import sys
@@ -162,5 +162,18 @@ class FinanceConfig:
             logger.info(f'Model evaluation config: [{model_evaluation_config}]')
 
             return model_evaluation_config
+        except Exception as e:
+            raise FinanceException(e, sys)
+
+    @staticmethod
+    def get_model_pusher_config() -> ModelPusherConfig:
+        try:
+            model_pusher_config = ModelPusherConfig(
+                model_dir=S3_MODEL_DIR_KEY,
+                bucket_name=S3_MODEL_BUCKET_NAME
+            )
+            logger.info(f'Model pusher config: {model_pusher_config}')
+
+            return model_pusher_config
         except Exception as e:
             raise FinanceException(e, sys)

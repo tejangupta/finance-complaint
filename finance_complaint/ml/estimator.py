@@ -26,7 +26,7 @@ class CloudEstimator(ABC):
 
         Returns: return List of all model cloud storage key path
         """
-        pass
+        raise NotImplementedError()
 
     @abstractmethod
     def get_latest_model_path(self, key) -> str:
@@ -38,7 +38,7 @@ class CloudEstimator(ABC):
 
         Returns: complete key path of cloud storage to download model
         """
-        pass
+        raise NotImplementedError()
 
     @abstractmethod
     def decompress_model(self, zip_model_file_path, extract_dir):
@@ -51,7 +51,7 @@ class CloudEstimator(ABC):
 
         Returns:
         """
-        pass
+        raise NotImplementedError()
 
     @abstractmethod
     def compress_model_dir(self, model_dir):
@@ -65,7 +65,7 @@ class CloudEstimator(ABC):
 
         Returns:
         """
-        pass
+        raise NotImplementedError()
 
     @abstractmethod
     def is_model_available(self, key) -> bool:
@@ -77,7 +77,7 @@ class CloudEstimator(ABC):
 
         Returns:
         """
-        pass
+        raise NotImplementedError()
 
     @abstractmethod
     def save(self, model_dir, key):
@@ -91,7 +91,7 @@ class CloudEstimator(ABC):
 
         Returns:
         """
-        pass
+        raise NotImplementedError()
 
     @abstractmethod
     def load(self, key, extract_dir) -> str:
@@ -105,7 +105,7 @@ class CloudEstimator(ABC):
 
         Returns: Model Directory
         """
-        pass
+        raise NotImplementedError()
 
     @abstractmethod
     def transform(self, df) -> DataFrame:
@@ -117,11 +117,10 @@ class CloudEstimator(ABC):
 
         Returns:
         """
-        pass
+        raise NotImplementedError()
 
 
 class S3Estimator(CloudEstimator):
-
     def __init__(self, bucket_name, region_name='ap-south-1', **kwargs):
         """
         Args:
@@ -156,7 +155,8 @@ class S3Estimator(CloudEstimator):
 
     def __get_save_model_path(self, key: str = None) -> str:
         """
-        This function prepare new cloud storage key to save the zipped mode
+        This function prepare new cloud storage key to save the zipped model
+
         Args:
             key:
 
@@ -282,9 +282,11 @@ class S3Estimator(CloudEstimator):
         """
         This function download the latest  model if complete cloud storage key for model not provided else
         model will be downloaded using provided model key path in extract dir
+
         Args:
             key:
             extract_dir:
+
         Returns: Model Directory
         """
         # obtaining latest model directory
