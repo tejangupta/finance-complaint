@@ -28,6 +28,15 @@ class ModelTrainerArtifact:
         self.model_trainer_ref_artifact = model_trainer_ref_artifact
         self.model_trainer_train_metric_artifact = model_trainer_train_metric_artifact
         self.model_trainer_test_metric_artifact = model_trainer_test_metric_artifact
+    
+    @staticmethod
+    def construct_object(**kwargs):
+        model_trainer_ref_artifact=PartialModelTrainerRefArtifact(**(kwargs['model_trainer_ref_artifact']))
+        model_trainer_train_metric_artifact=PartialModelTrainerMetricArtifact(**(kwargs['model_trainer_train_metric_artifact']))
+        model_trainer_test_metric_artifact=PartialModelTrainerMetricArtifact(**(kwargs['model_trainer_test_metric_artifact']))
+        model_trainer_artifact = ModelTrainerArtifact(model_trainer_ref_artifact,model_trainer_train_metric_artifact,model_trainer_test_metric_artifact)
+
+        return model_trainer_artifact
 
     def _asdict(self):
         try:
@@ -42,7 +51,7 @@ class ModelTrainerArtifact:
 
 
 class ModelEvaluationArtifact:
-    def __init__(self, model_accepted, changed_accuracy, trained_model_path, best_model_path, active):
+    def __init__(self, model_accepted, changed_accuracy, trained_model_path, best_model_path, active,*args,**kwargs):
         self.model_accepted = model_accepted
         self.changed_accuracy = changed_accuracy
         self.trained_model_path = trained_model_path
